@@ -1,0 +1,90 @@
+/* Unthemed tokens: type, spacing, radius, layers, motion. Decided in spec 0.6.
+   Breakpoints cannot be variables in CSS. See README.md for the values to use. */
+:root {
+  /* Fonts. --font-manrope and --font-dm-sans are set by next/font on <html>. */
+  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Type scale. Size and line height pairs. Body copy is never below 16px on phones. */
+  --text-xs-size: 0.75rem;
+  --text-xs-line: 1rem;
+  --text-sm-size: 0.875rem;
+  --text-sm-line: 1.25rem;
+  --text-base-size: 1rem;
+  --text-base-line: 1.5rem;
+  --text-lg-size: 1.125rem;
+  --text-lg-line: 1.75rem;
+  --text-xl-size: 1.25rem;
+  --text-xl-line: 1.75rem;
+  --text-2xl-size: 1.5rem;
+  --text-2xl-line: 2rem;
+  --text-3xl-size: 1.875rem;
+  --text-3xl-line: 2.25rem;
+  --text-4xl-size: 2.25rem;
+  --text-4xl-line: 2.5rem;
+  --text-5xl-size: 3rem;
+  --text-5xl-line: 3.25rem;
+
+  --tracking-normal: 0;
+  --tracking-heading: -0.02em;
+  --tracking-display: -0.03em;
+
+  /* Spacing on a 4px base */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 9999px;
+
+  --tap-min: 2.75rem;
+  --content-max: 72rem;
+
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+
+  /* Motion (R122, R131). Motion must explain something, so use these and nothing else. */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Reduced motion: effectively instant. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0.01ms;
+    --duration-base: 0.01ms;
+    --duration-slow: 0.01ms;
+  }
+}
+
+/* Lite motion for weaker devices. Nothing sets this attribute yet (detection comes later). */
+:root[data-motion='lite'] {
+  --duration-base: 120ms;
+  --duration-slow: 120ms;
+}
