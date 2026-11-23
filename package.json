@@ -8,6 +8,7 @@
     "lint": "pnpm -r --filter ./apps/web lint",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
+    "test:isolation": "pnpm --filter @reydarr/db-tests test:isolation",
     "format": "prettier --write ."
   },
   "devDependencies": {
