@@ -1,0 +1,17 @@
+{
+  "name": "reydarr",
+  "private": true,
+  "packageManager": "pnpm@12.21.0",
+  "scripts": {
+    "dev": "pnpm -r --filter ./apps/web dev",
+    "build": "pnpm -r --filter ./apps/web build",
+    "lint": "pnpm -r --filter ./apps/web lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:isolation": "pnpm --filter @reydarr/db-tests test:isolation",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "3.10.1"
+  }
+}

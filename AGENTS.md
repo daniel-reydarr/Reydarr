@@ -29,6 +29,7 @@ If a builder task needs a change to a guard-owned file, write a "Change request 
 ## 3. Stack and conventions
 
 - Stack: Next.js (App Router), TypeScript, Supabase (Postgres, auth, storage), Vercel. Pin exact versions when installing and record them in the PR description. Latest stable versions: to verify at install time.
+- Next.js: this version differs from what you may remember. Before writing Next.js code, read `apps/web/AGENTS.md` and the guides in `node_modules/next/dist/docs/` as it directs. If it conflicts with this file, this file wins. Do not enable experimental Next.js flags unless a spec says so.
 - TypeScript `strict: true`. No `any` without a comment explaining why. No `@ts-ignore`.
 - One codebase serves the dashboard and customer sites by hostname. The site renderer must stay separate from the dashboard code so serving sites can move later.
 - Proposed repo layout (confirmed in the Phase 0 brief): a workspace with `apps/web` and `packages/zuri-core`. Zuri lives in `packages/zuri-core` and must not import from `apps/web`.

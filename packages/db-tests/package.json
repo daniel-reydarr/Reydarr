@@ -1,0 +1,17 @@
+{
+  "//": "GUARD-OWNED: do not edit. Request changes through the architect.",
+  "name": "@reydarr/db-tests",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:isolation": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "2.119.2",
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3",
+    "vitest": "5.1.1"
+  }
+}
