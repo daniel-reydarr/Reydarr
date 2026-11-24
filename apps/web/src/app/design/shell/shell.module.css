@@ -58,3 +58,9 @@
   font: var(--type-caption);
   color: var(--text-tertiary);
 }
+
+@media (max-width: 39.99rem) {
+  .zuriCard > span:first-child {
+    align-self: flex-start;
+  }
+}
