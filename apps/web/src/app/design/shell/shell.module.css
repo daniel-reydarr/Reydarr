@@ -1,0 +1,66 @@
+.zuriCard {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-4);
+  padding: var(--card-pad);
+}
+
+.zuriText h2 {
+  font: var(--type-h3);
+  letter-spacing: var(--type-h3-tracking);
+}
+
+.zuriText p {
+  margin: var(--space-1) 0 0;
+  font: var(--type-ui);
+  color: var(--text-secondary);
+}
+
+.cta {
+  width: 100%;
+}
+
+@media (min-width: 40rem) {
+  .zuriCard {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .zuriText {
+    flex: 1;
+  }
+
+  .cta {
+    width: auto;
+  }
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.askBar {
+  max-width: 40rem;
+}
+
+/* The panel carries the Zuri input from 1280px, so the bar is hidden there. */
+@media (min-width: 80rem) {
+  .askBar {
+    display: none;
+  }
+}
+
+.note {
+  margin: 0;
+  font: var(--type-caption);
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 39.99rem) {
+  .zuriCard > span:first-child {
+    align-self: flex-start;
+  }
+}

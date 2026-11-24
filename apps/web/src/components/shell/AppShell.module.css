@@ -1,0 +1,245 @@
+/* Mobile first. Below 768: bottom tab bar. 768 and up: icon rail. 1024 and up: sidebar.
+   1280 and up with a panel: third column. */
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sidebar,
+.rail,
+.panel {
+  display: none;
+}
+
+.main {
+  min-width: 0;
+  padding: var(--space-6) var(--gutter)
+    calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--space-8));
+}
+
+.content {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Bottom tab bar */
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  height: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  box-shadow: var(--elev-1);
+}
+
+.tabsList {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabsCell {
+  flex: 1;
+  min-width: 0;
+}
+
+.tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 100%;
+  min-height: var(--tap-min);
+  color: var(--text-secondary);
+  font: var(--type-caption);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.tab[aria-current='page'] {
+  color: var(--text-primary);
+  font-weight: var(--weight-semibold);
+}
+
+/* The one small Ping signal on the active tab. */
+.tab[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  top: var(--space-1);
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: var(--radius-full);
+  background: var(--action-bg);
+}
+
+/* Icon rail */
+.rail {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  width: var(--rail-w);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  border-right: 1px solid var(--border-subtle);
+  background: var(--bg-page);
+}
+
+.railBrand {
+  display: flex;
+  justify-content: center;
+}
+
+.railList,
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.railLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.railLink:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.railLink[aria-current='page'] {
+  background: var(--bg-selected);
+  color: var(--text-primary);
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  width: var(--sidebar-w);
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-5) var(--space-3);
+  border-right: 1px solid var(--border-subtle);
+  background: var(--bg-page);
+}
+
+.brand {
+  padding: 0 var(--space-2);
+}
+
+.sideLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--control-md);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font: var(--type-ui);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.sideLink:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.sideLink[aria-current='page'] {
+  background: var(--bg-selected);
+  color: var(--text-primary);
+  font: var(--type-ui-strong);
+}
+
+/* Panel */
+.panel {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  width: var(--panel-w);
+  border-left: 1px solid var(--border-subtle);
+  background: var(--bg-page);
+  overflow-y: auto;
+}
+
+@media (min-width: 48rem) {
+  .shell {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  }
+
+  .rail {
+    display: flex;
+  }
+
+  .tabbar {
+    display: none;
+  }
+
+  .main {
+    padding: var(--space-8) var(--gutter);
+  }
+}
+
+@media (min-width: 64rem) {
+  .shell {
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  }
+
+  .rail {
+    display: none;
+  }
+
+  .sidebar {
+    display: flex;
+  }
+}
+
+@media (min-width: 80rem) {
+  .withPanel {
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--panel-w);
+  }
+
+  .withPanel .panel {
+    display: block;
+  }
+}
