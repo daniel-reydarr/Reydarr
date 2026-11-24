@@ -1,0 +1,24 @@
+/* Light is the default and the no-JavaScript state. Dark swaps in under data-theme. */
+.wrap {
+  display: inline-flex;
+  line-height: 0;
+  flex: none;
+}
+
+.light,
+.dark {
+  display: block;
+  max-width: none;
+}
+
+.dark {
+  display: none;
+}
+
+:global(:root[data-theme='dark']) .light {
+  display: none;
+}
+
+:global(:root[data-theme='dark']) .dark {
+  display: block;
+}
