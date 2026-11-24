@@ -1,7 +1,8 @@
 /* Raw palette. The only file in the app that holds hex values (R130).
    Components never read --palette-* directly. They read role tokens from themes.css.
    Brand values come from the master plan (R116, R126). Every other value was decided
-   in spec 0.6 and checked for contrast. Change values only through the architect. */
+   in the design pass (docs/design/01-color.md) and checked for contrast.
+   Change values only through the architect. Tokens v2 (spec 0.6b). */
 :root {
   /* Brand */
   --palette-ink: #0a0f1f;
@@ -12,32 +13,34 @@
   --palette-slate: #3a4052;
   --palette-white: #ffffff;
 
-  /* Stepped navy neutral scale (dark theme surfaces, secondary text) */
+  /* Stepped navy neutral scale (dark theme surfaces and text) */
   --palette-navy-950: #0a0f1f;
   --palette-navy-900: #151b30;
   --palette-navy-800: #1e263e;
   --palette-navy-700: #2a3248;
   --palette-navy-600: #3a4052;
   --palette-navy-500: #5a6072;
+  --palette-navy-450: #60677a;
   --palette-navy-400: #6b7186;
+  --palette-navy-350: #8a90a5;
   --palette-navy-300: #b9bdcb;
 
   /* Warm bone scale (light theme surfaces and borders) */
   --palette-bone-50: #fbfaf6;
   --palette-bone-100: #f5f2ea;
+  --palette-bone-150: #efebe1;
   --palette-bone-200: #ebe7db;
   --palette-bone-300: #d8d3c5;
   --palette-bone-500: #7c7767;
 
-  /* Ping steps, lighter to darker */
+  /* Ping steps, lighter to darker. Adjacent states differ by at least 10% in luminance ratio. */
   --palette-ping-400: #ff7448;
   --palette-ping-500: #ff5a2c;
-  --palette-ping-550: #f04e1f;
   --palette-ping-600: #f0481a;
-  --palette-ping-650: #e64515;
+  --palette-ping-700: #e64515;
   --palette-ping-800: #c73a0f;
 
-  /* Functional colors. Hues are kept away from Ping (R126). */
+  /* Functional colors. Hues are kept away from Ping (R126). Unchanged from spec 0.6. */
   --palette-green-700: #14623b;
   --palette-green-600: #1b7f4d;
   --palette-green-100: #e3f1e8;

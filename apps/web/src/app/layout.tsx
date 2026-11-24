@@ -4,6 +4,7 @@ import { THEME_COLORS, THEME_INIT_SCRIPT } from "@/lib/theme";
 import "@/styles/tokens/palette.css";
 import "@/styles/tokens/themes.css";
 import "@/styles/tokens/scale.css";
+import '@/styles/tokens/type.css';
 import "./globals.css";
 
 const manrope = Manrope({

@@ -1,10 +1,12 @@
-/* Guards the design tokens. It fails when a color pair drops below WCAG contrast,
-   when a theme is missing a role, or when a component reaches past the roles (R130).
+/* Guards the design tokens (v2, spec 0.6b). It fails when a color pair drops below WCAG
+   contrast, when a theme is missing a role, when states or surfaces stop being visibly
+   different, or when a component reaches past the roles (R130).
    Change token values only through the architect. */
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { THEME_COLORS } from '../../lib/theme';
 
 const tokensDir = dirname(fileURLToPath(import.meta.url));
 const srcRoot = join(tokensDir, '..', '..');
@@ -99,6 +101,15 @@ const textPairs: Array<[string, string]> = [
   ['text-secondary', 'bg-page'],
   ['text-secondary', 'bg-surface'],
   ['text-secondary', 'bg-subtle'],
+  ['text-tertiary', 'bg-page'],
+  ['text-tertiary', 'bg-surface'],
+  ['text-tertiary', 'bg-subtle'],
+  ['text-primary', 'bg-hover'],
+  ['text-primary', 'bg-selected'],
+  ['text-primary', 'bg-raised'],
+  ['text-secondary', 'bg-hover'],
+  ['text-secondary', 'bg-selected'],
+  ['text-secondary', 'bg-raised'],
   ['text-brand', 'bg-page'],
   ['text-brand', 'bg-surface'],
   ['text-on-action', 'action-bg'],
@@ -119,6 +130,8 @@ const interfacePairs: Array<[string, string]> = [
   ['border-strong', 'bg-subtle'],
   ['focus-ring', 'bg-page'],
   ['focus-ring', 'bg-surface'],
+  ['action-edge', 'bg-page'],
+  ['action-edge', 'bg-surface'],
   ...functional.map((f): [string, string] => [`${f}-solid`, 'bg-page']),
 ];
 
@@ -130,6 +143,22 @@ describe('palette', () => {
     expect(palette.get('ping')).toBe('#ff5a2c');
     expect(palette.get('ping-deep')).toBe('#c73a0f');
     expect(palette.get('slate')).toBe('#3a4052');
+  });
+
+  it('has the v2 additions and no dropped Ping steps', () => {
+    for (const name of ['navy-450', 'navy-350', 'bone-150', 'ping-700']) {
+      expect(palette.has(name)).toBe(true);
+    }
+    for (const name of ['ping-550', 'ping-650']) {
+      expect(palette.has(name)).toBe(false);
+    }
+  });
+});
+
+describe('theme-color meta values (src/lib/theme.ts)', () => {
+  it('equal --bg-page in each theme', () => {
+    expect(THEME_COLORS.light).toBe(hex('light', 'bg-page'));
+    expect(THEME_COLORS.dark).toBe(hex('dark', 'bg-page'));
   });
 });
 
@@ -154,6 +183,26 @@ describe.each(['light', 'dark'] as const)('%s theme contrast', (theme) => {
 
   it.each(interfacePairs)('interface: --%s against --%s is at least 3', (fg, bg) => {
     expect(contrast(hex(theme, fg), hex(theme, bg))).toBeGreaterThanOrEqual(3);
+  });
+});
+
+/* Neighbouring states and surfaces must be visibly different, not just numerically so. */
+describe.each(['light', 'dark'] as const)('%s theme states and surfaces', (theme) => {
+  it('keeps hover and pressed visibly different from the resting action color', () => {
+    expect(contrast(hex(theme, 'action-bg'), hex(theme, 'action-bg-hover'))).toBeGreaterThanOrEqual(1.1);
+    expect(contrast(hex(theme, 'action-bg'), hex(theme, 'action-bg-pressed'))).toBeGreaterThanOrEqual(1.1);
+  });
+
+  it('keeps the hairline border visible on cards and on the page', () => {
+    expect(contrast(hex(theme, 'border-subtle'), hex(theme, 'bg-surface'))).toBeGreaterThanOrEqual(1.3);
+    expect(contrast(hex(theme, 'border-subtle'), hex(theme, 'bg-page'))).toBeGreaterThanOrEqual(1.25);
+  });
+});
+
+describe('dark elevation', () => {
+  it('raises surfaces with lighter steps, because shadows do not show on dark', () => {
+    expect(contrast(hex('dark', 'bg-surface'), hex('dark', 'bg-page'))).toBeGreaterThanOrEqual(1.1);
+    expect(contrast(hex('dark', 'bg-raised'), hex('dark', 'bg-surface'))).toBeGreaterThanOrEqual(1.05);
   });
 });
 

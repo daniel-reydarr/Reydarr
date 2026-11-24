@@ -1,7 +1,7 @@
 # AGENTS.md: Reydarr Build Standards
 
 Read this file fully at the start of every task. It overrides your defaults.
-Product context lives in Reydarr_Master_Plan.md (decisions R1 to R136, plus later entries in the decisions log). Spell the product "Reydarr" with a capital R in copy and lowercase in the domain (reydarr.com). The assistant is "Zuri".
+Product context lives in Reydarr_Master_Plan.md (decisions R1 to R144, plus later entries in the decisions log). Spell the product "Reydarr" with a capital R in copy and lowercase in the domain (reydarr.com). The assistant is "Zuri".
 
 ## 1. The prime rule: do not guess
 
@@ -42,6 +42,18 @@ If a builder task needs a change to a guard-owned file, write a "Change request 
 - Fonts: Manrope (headings) and DM Sans (body), served from our own site. Components read design-token roles only, never raw hex values.
 - Performance: customer sites must stay small and fast on throttled mobile connections. No heavy client scripts. Phones, tablets and laptops are equally important.
 
+## 3a. Design standards
+
+- Before any UI work, read `docs/design/00-principles-and-rubric.md` and the file for your area in `docs/design/`. They override your own design instincts. If a spec and these files disagree, stop and ask.
+- They apply to the Reydarr app and marketing site only. Customer sites use the site system (R118).
+- Components read role and scale tokens only. No raw hex, no one-off sizes, no new colors, no new fonts, no inline styles for color.
+- One Ping primary action per screen. Ping is about a tenth of a screen.
+- Design phone first. Floor 360px, evidence at 375, 768 and 1280, light and dark. Touch targets 44px on coarse pointers.
+- Motion uses transform and opacity only, with tokens, and must have a reduced-motion version.
+- Icons come only through the `Icon` wrapper. Logos only through `Logo`. The Zuri mark only through `ZuriMark`.
+- UI copy follows `docs/design/08-ui-writing.md`.
+- UI work is not done without the evidence matrix in `docs/design/09-accessibility-and-performance.md` and a design review list scored against the rubric in 00.
+
 ## 4. Secrets and safety
 
 - Never write a key, token, password or secret into code, tests, logs, comments, commit messages or chat.
@@ -54,7 +66,7 @@ If a builder task needs a change to a guard-owned file, write a "Change request 
 - Every task ends with an evidence pack. Do not say "done" without it:
   1. Commands run and their full output (typecheck, lint, tests, build).
   2. For database work: the SQL run and its result.
-  3. For UI work: the preview URL and a screenshot at phone width and laptop width, in light and dark themes.
+  3. For UI work: the preview URL, screenshots at 375, 768 and 1280 wide in light and dark themes, overflow checks at 360 and 320, and the evidence matrix and rubric review from `docs/design/09-accessibility-and-performance.md`.
   4. A list of files created or changed, with a one-line reason each.
   5. Any "Blocking questions" and any TODO marked "to verify".
 - Tests are required for logic that has rules (hostname parsing, entitlements, checkers). A failing or skipped test means the task is not done.

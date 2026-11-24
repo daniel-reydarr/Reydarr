@@ -1,0 +1,105 @@
+/* Role tokens. Components read these and nothing else for color (R130).
+   Light is the default. The dark theme applies when <html data-theme="dark"> is set
+   by the script in src/lib/theme.ts. Every role must exist in both blocks, and
+   contrast.test.ts checks that. Ping Deep text (--text-brand) is allowed on
+   --bg-page and --bg-surface only, not on --bg-subtle (contrast 4.2).
+   Elevation: light separates with hairlines, dark with lighter surfaces, a border and
+   a faint top highlight (--edge-highlight). Shadows do not separate dark surfaces.
+   Keep blocks free of nested braces, the test parses them by the first closing brace. */
+:root {
+  color-scheme: light;
+  --bg-page: var(--palette-bone-100);
+  --bg-surface: var(--palette-bone-50);
+  --bg-subtle: var(--palette-bone-200);
+  --bg-hover: var(--palette-bone-150);
+  --bg-selected: var(--palette-bone-200);
+  --bg-raised: var(--palette-bone-50);
+  --bg-inverse: var(--palette-navy-950);
+  --border-subtle: var(--palette-bone-300);
+  --border-strong: var(--palette-bone-500);
+  --text-primary: var(--palette-navy-950);
+  --text-secondary: var(--palette-navy-500);
+  --text-tertiary: var(--palette-navy-450);
+  --text-disabled: var(--palette-navy-400);
+  --text-on-inverse: var(--palette-bone-100);
+  --text-brand: var(--palette-ping-800);
+  --text-on-action: var(--palette-navy-950);
+  --action-bg: var(--palette-ping-500);
+  --action-bg-hover: var(--palette-ping-600);
+  --action-bg-pressed: var(--palette-ping-700);
+  --action-edge: var(--palette-ping-800);
+  --focus-ring: var(--palette-ping-800);
+  --success-solid: var(--palette-green-600);
+  --success-on-solid: var(--palette-white);
+  --success-subtle: var(--palette-green-100);
+  --success-text: var(--palette-green-700);
+  --danger-solid: var(--palette-rose-600);
+  --danger-on-solid: var(--palette-white);
+  --danger-subtle: var(--palette-rose-100);
+  --danger-text: var(--palette-rose-700);
+  --warning-solid: var(--palette-amber-600);
+  --warning-on-solid: var(--palette-navy-950);
+  --warning-subtle: var(--palette-amber-100);
+  --warning-text: var(--palette-amber-800);
+  --info-solid: var(--palette-blue-600);
+  --info-on-solid: var(--palette-white);
+  --info-subtle: var(--palette-blue-100);
+  --info-text: var(--palette-blue-700);
+  --overlay: rgba(10, 15, 31, 0.5);
+  --shadow-sm: 0 1px 2px rgba(10, 15, 31, 0.06);
+  --shadow-md: 0 4px 12px rgba(10, 15, 31, 0.08);
+  --shadow-lg: 0 12px 32px rgba(10, 15, 31, 0.12);
+  --edge-highlight: inset 0 0 0 0 transparent;
+  --elev-1: var(--edge-highlight);
+  --elev-2: var(--shadow-md), var(--edge-highlight);
+  --elev-3: var(--shadow-lg), var(--edge-highlight);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg-page: var(--palette-navy-950);
+  --bg-surface: var(--palette-navy-900);
+  --bg-subtle: var(--palette-navy-800);
+  --bg-hover: var(--palette-navy-800);
+  --bg-selected: var(--palette-navy-700);
+  --bg-raised: var(--palette-navy-800);
+  --bg-inverse: var(--palette-bone-100);
+  --border-subtle: var(--palette-navy-700);
+  --border-strong: var(--palette-navy-400);
+  --text-primary: var(--palette-bone-100);
+  --text-secondary: var(--palette-navy-300);
+  --text-tertiary: var(--palette-navy-350);
+  --text-disabled: var(--palette-navy-400);
+  --text-on-inverse: var(--palette-navy-950);
+  --text-brand: var(--palette-ping-500);
+  --text-on-action: var(--palette-navy-950);
+  --action-bg: var(--palette-ping-500);
+  --action-bg-hover: var(--palette-ping-400);
+  --action-bg-pressed: var(--palette-ping-600);
+  --action-edge: var(--palette-ping-500);
+  --focus-ring: var(--palette-ping-500);
+  --success-solid: var(--palette-green-400);
+  --success-on-solid: var(--palette-navy-950);
+  --success-subtle: var(--palette-green-950);
+  --success-text: var(--palette-green-300);
+  --danger-solid: var(--palette-rose-400);
+  --danger-on-solid: var(--palette-navy-950);
+  --danger-subtle: var(--palette-rose-950);
+  --danger-text: var(--palette-rose-300);
+  --warning-solid: var(--palette-amber-400);
+  --warning-on-solid: var(--palette-navy-950);
+  --warning-subtle: var(--palette-amber-950);
+  --warning-text: var(--palette-amber-300);
+  --info-solid: var(--palette-blue-400);
+  --info-on-solid: var(--palette-navy-950);
+  --info-subtle: var(--palette-blue-950);
+  --info-text: var(--palette-blue-300);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --edge-highlight: inset 0 1px 0 rgba(245, 242, 234, 0.06);
+  --elev-1: var(--edge-highlight);
+  --elev-2: var(--shadow-md), var(--edge-highlight);
+  --elev-3: var(--shadow-lg), var(--edge-highlight);
+}

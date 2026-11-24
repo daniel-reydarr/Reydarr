@@ -12,7 +12,7 @@ This document records every decision, direction, reason and technology agreed in
 - Sections 4 to 16 follow the layers in the order they were planned: product, website engine, content engine, growth, onboarding, accounts, billing, brand, compliance, data model, AI layer, stack, build order.
 - Section 17 holds the money: AI costs, margins and infrastructure costs.
 - Section 18 lists what is still open, the risks, and the planning areas that remain.
-- Appendix A is the full numbered decisions log (R1 to R136). Appendix B explains technical terms in plain language. Appendix C lists the brand asset pack. Appendix D lists sources.
+- Appendix A is the full numbered decisions log (R1 to R144). Appendix B explains technical terms in plain language. Appendix C lists the brand asset pack. Appendix D lists sources.
 - Figures marked "to verify" came from third-party pages or from memory and must be checked on the provider's own site before money is spent.
 
 ---
@@ -224,7 +224,7 @@ The conversation began with Code asking for a rebuild and rebrand of the existin
 
 - **Two separate design systems:** Reydarr's own app, and the customer-site system (section library and recipes), which uses each business's brand kit (R118).
 - **Light and dark themes from day one**, through tokens (R119). The tokens file holds brand, color roles for both themes, type scale, spacing, radius, shadows and motion. Components read roles only (R130).
-- **App reference: Framer's dashboard and UI feel** (R124).
+- **App reference (R137, supersedes R124):** the Vercel dashboard's structure with Reydarr's palette and a friendlier tone modeled on Shopify Polaris and Mercury. Framer and Stripe guide marketing and motion. Full rules live in `docs/design/`.
 - **Motion (R122, R131):** animations, transitions and interactions are in scope, scaled to device capability, with reduced-motion support and a mid-range Android performance budget. Motion must explain something, using shared easings and durations.
 - App icons are one outline set. Illustrations appear only in empty states, in the brand palette (R132).
 - A separate external Zuri app with its own brand kit is parked as a future scope question (R121).
@@ -576,7 +576,7 @@ The numbered layers are planned, but these areas have not been planned yet:
 
 ---
 
-## Appendix A: Full decisions log (R1 to R136)
+## Appendix A: Full decisions log (R1 to R144)
 
 Entries are as logged during the conversation. The status notes after the list record where later decisions changed or completed an entry.
 
@@ -716,6 +716,14 @@ Entries are as logged during the conversation. The status notes after the list r
 - **R134.** Reydarr mark Figma construction: 64-unit grid, stroke diameters measured at stroke center, variants for dark, light, orange, compact and micro, tested at 16, 32, 64 and 512 px
 - **R135.** Wordmark: Manrope Bold, about -3% tracking, hand-kerned, outlined for logo files, clear space equal to the dot's diameter
 - **R136.** Identity checks open: domain, handles, misspellings, and a professional trademark search
+- **R137.** App design reference moves from Framer to the Vercel dashboard's structure (hairline cards, dense settings cards, grouped sidebar), with Shopify Polaris and Mercury as the model for plain, friendly small-business UI. Framer and Stripe remain the reference for marketing pages and motion craft. Supersedes R124. Reydarr's own palette applies throughout
+- **R138.** Widths: phone evidence screenshots at 375px (not 390). Design floor 360px, nothing breaks at 320px, layouts are fluid. Evidence also at 768 and 1280, light and dark
+- **R139.** One Ping primary action per screen. Everything else is neutral. Primary buttons carry a Ping Deep edge on light backgrounds for non-text contrast
+- **R140.** Icons: Lucide, exact version pinned, 1.5px stroke, sizes 16, 20 and 24, used only through an `Icon` wrapper. Needs its own spec because it adds a dependency
+- **R141.** Navigation: bottom tab bar on phones (Today, Site, Requests, Zuri), icon rail on tablets, sidebar on laptops. Zuri is a panel on large laptops and a sheet below that
+- **R142.** Elevation: light mode uses hairline borders with no resting shadow. Dark mode raises surfaces with lighter steps, a border and a faint top highlight
+- **R143.** The design docs in `docs/design/` are the source of truth for the Reydarr app and marketing site. Customer sites keep their own system (R118). Token changes go through the architect
+- **R144.** The Zuri icon is a placeholder until a planned redesign. One `ZuriMark` component renders it so the swap touches one place
 
 ### Status notes (changes since logging)
 
@@ -730,6 +738,7 @@ Entries are as logged during the conversation. The status notes after the list r
 | R127 | The light mark variant uses solid peach rings (`#F9B59E` inner, `#F7D7C8` outer) in the asset pack, not silver-gray. |
 | R129, R135 | Confirmed: Manrope Bold wordmark and Manrope plus DM Sans typography. |
 | R136 | Still open. |
+| R124 | Superseded by R137. |
 | Early decision 4 | "OpenRouter config-driven router plus a separate media layer" became the model gateway plus the replaceable media layer, with OpenAI text models and Higgsfield media. |
 
 ---
