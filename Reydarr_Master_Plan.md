@@ -12,7 +12,7 @@ This document records every decision, direction, reason and technology agreed in
 - Sections 4 to 16 follow the layers in the order they were planned: product, website engine, content engine, growth, onboarding, accounts, billing, brand, compliance, data model, AI layer, stack, build order.
 - Section 17 holds the money: AI costs, margins and infrastructure costs.
 - Section 18 lists what is still open, the risks, and the planning areas that remain.
-- Appendix A is the full numbered decisions log (R1 to R144). Appendix B explains technical terms in plain language. Appendix C lists the brand asset pack. Appendix D lists sources.
+- Appendix A is the full numbered decisions log (R1 to R145). Appendix B explains technical terms in plain language. Appendix C lists the brand asset pack. Appendix D lists sources.
 - Figures marked "to verify" came from third-party pages or from memory and must be checked on the provider's own site before money is spent.
 
 ---
@@ -576,7 +576,7 @@ The numbered layers are planned, but these areas have not been planned yet:
 
 ---
 
-## Appendix A: Full decisions log (R1 to R144)
+## Appendix A: Full decisions log (R1 to R145)
 
 Entries are as logged during the conversation. The status notes after the list record where later decisions changed or completed an entry.
 
@@ -724,6 +724,7 @@ Entries are as logged during the conversation. The status notes after the list r
 - **R142.** Elevation: light mode uses hairline borders with no resting shadow. Dark mode raises surfaces with lighter steps, a border and a faint top highlight
 - **R143.** The design docs in `docs/design/` are the source of truth for the Reydarr app and marketing site. Customer sites keep their own system (R118). Token changes go through the architect
 - **R144.** The Zuri icon is a placeholder until a planned redesign. One `ZuriMark` component renders it so the swap touches one place
+- **R145.** Design upgrade deferred. The system is built (tokens, icons, components, shell) but the product does not yet look distinctive. Before Phase 3 onboarding screens are built, design the five key moments and the ping signature idea. Notes in `docs/design/10-design-upgrade-handoff.md`
 
 ### Status notes (changes since logging)
 

@@ -17,6 +17,7 @@ Read this file first, then the file for the area you are working on. If a spec c
 | 07-logo-and-brand-usage.md | Logo variants, clear space, Zuri mark, chrome |
 | 08-ui-writing.md | Voice, microcopy, Naira, dates, errors |
 | 09-accessibility-and-performance.md | WCAG target, perf budget, evidence matrix |
+| 10-design-upgrade-handoff.md | Deferred upgrade plan, ratings and open checks |
 
 ## Identity in one line
 

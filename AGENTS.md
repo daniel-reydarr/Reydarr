@@ -1,7 +1,7 @@
 # AGENTS.md: Reydarr Build Standards
 
 Read this file fully at the start of every task. It overrides your defaults.
-Product context lives in Reydarr_Master_Plan.md (decisions R1 to R144, plus later entries in the decisions log). Spell the product "Reydarr" with a capital R in copy and lowercase in the domain (reydarr.com). The assistant is "Zuri".
+Product context lives in Reydarr_Master_Plan.md (decisions R1 to R145, plus later entries in the decisions log). Spell the product "Reydarr" with a capital R in copy and lowercase in the domain (reydarr.com). The assistant is "Zuri".
 
 ## 1. The prime rule: do not guess
 
